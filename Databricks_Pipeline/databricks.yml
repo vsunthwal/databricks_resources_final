@@ -1,0 +1,28 @@
+# This is a Databricks asset bundle definition for Databricks_Pipeline.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: Databricks_Pipeline
+  uuid: 91368814-21de-4230-819e-fed0902c8c58
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+  
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-2024070970089058.18.azuredatabricks.net
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-2024070970089058.18.azuredatabricks.net
+      
+      root_path: /Workspace/Users/valinisunthwal2003@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: valinisunthwal2003@gmail.com
+        level: CAN_MANAGE
+    run_as:
+      user_name: valinisunthwal2003@gmail.com

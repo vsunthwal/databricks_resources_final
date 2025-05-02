@@ -1,0 +1,27 @@
+# This is a Databricks asset bundle definition for Databricks_Cluster.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: Databricks_Cluster
+  uuid: 535b6b4f-7ff8-4310-a452-972ff15f8db1
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-2024070970089058.18.azuredatabricks.net
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-2024070970089058.18.azuredatabricks.net
+      
+      root_path: /Workspace/Users/valinisunthwal2003@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: valinisunthwal2003@gmail.com
+        level: CAN_MANAGE
+    run_as:
+      user_name: valinisunthwal2003@gmail.com
